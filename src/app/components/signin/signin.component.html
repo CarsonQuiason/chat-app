@@ -1,8 +1,9 @@
 
-<ng-container *ngIf="auth.user$ | async as user; else login">
-    <mat-toolbar color="primary">
+<ng-container  *ngIf="auth.user$ | async as user; else login">
+    <mat-toolbar class="toolbarStyle">
         <h1>Welcome, {{ user.displayName }}</h1>
         <img class="profileImg" [src]="user?.photoURL">
+        
         <span class="example-spacer"></span>
         <h1>Sign Out</h1>
         <button mat-icon-button aria-label="logout" (click)="auth.signOut()" class="hvr-grow-shadow">
@@ -35,12 +36,23 @@
 </ng-container>
 
 <ng-template #login>
-    <mat-toolbar color="primary" >
-        <h1>Login with Google</h1>
-        <button mat-icon-button aria-label="login with google button" (click)="auth.googleSignin()" class="hvr-grow-shadow">
-            <mat-icon>account_circle</mat-icon>
-        </button>
+    <mat-toolbar class="toolbarStyle">
+        <br>
+        <h1>Chat App <mat-icon>message</mat-icon></h1>
+        <br>
     </mat-toolbar>
-    <h1 class="header">Welcome to ChatApp, please login with Google to view Chat Rooms</h1>
+    <h1 class="header">Welcome to ChatApp, please login with Google to view chat rooms</h1>
+    <div class="signInContainer">
+        <div class="signIn">
+            <h1 class="signInHeader">Sign In</h1>
+            <div class="logi">   
+                <p>Login with Google 
+                    <button mat-icon-button aria-label="login with google button" (click)="auth.googleSignin()" class="hvr-grow-shadow">
+                        <mat-icon>account_circle</mat-icon>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
 </ng-template>
 

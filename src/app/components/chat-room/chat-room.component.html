@@ -1,5 +1,5 @@
 <ng-container *ngIf="chat$ | async as chat">
-    <mat-toolbar id="navbar" color="primary">
+    <mat-toolbar id="navbar" class="navbar">
         <button routerLink="" mat-icon-button aria-label="go back" class="hvr-grow-shadow">
             <mat-icon>arrow_back</mat-icon>
         </button>
@@ -39,7 +39,7 @@
         </div>
         <div class="messageBar">
             <div class="inputDiv">
-                <input [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)" pla bceholder="Enter a Message" appearance="fill">
+                <input class="messageInput" [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)" placeholder="Enter a Message" appearance="fill">
                 <button mat-raised-button color="primary" (click)="submit(chat.id)" class="sendButton" >Send</button>
             </div>
             <div>

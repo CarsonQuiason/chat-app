@@ -1,5 +1,5 @@
 .container{
-    background-color: lightgrey;
+    background-color: rgba(0, 0, 0, 0.426);
 
     border-radius: 20px;
     width: 80%;
@@ -9,9 +9,6 @@
     padding: 10px;
     height: 80%;
     position: relative;
-
-    // The 3 lines below were obtained from a response by user Nathan Arthur at this StackOverflow post:
-    // https://stackoverflow.com/questions/18614301/keep-overflow-div-scrolled-to-bottom-unless-user-scrolls-up
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
@@ -77,12 +74,14 @@ input {
     height: 50px;
 }
 h1 {
+    color: white;
     text-align: center;
 }
 
 .extraButtons{
     width: 5%;
     margin-right: 3px;
+    background-color:rgba(0, 0, 0, 0.426);
 }
 
 .sendButton {
@@ -97,4 +96,21 @@ h1 {
 .gifMenu {
     display: flex;
     justify-content: center;
+}
+
+p{
+    color: white;
+}
+
+.navbar{
+    background-color:rgba(0, 0, 0, 0.426);
+}
+
+mat-icon{
+    color: white;
+}
+
+.messageInput{
+    color: white;
+    background-color:rgba(56, 56, 56, 0.426);
 }
