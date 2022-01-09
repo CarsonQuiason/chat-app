@@ -1,0 +1,66 @@
+<ng-container *ngIf="chat$ | async as chat">
+    <mat-toolbar id="navbar" color="primary">
+        <button routerLink="" mat-icon-button aria-label="go back" class="hvr-grow-shadow">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h1>{{chat.title}}</h1>
+    </mat-toolbar>
+    <div id="spacer"></div>
+    <div class="container">
+
+        <div class="messageContainer">
+
+            <div *ngFor="let msg of chat.msg; trackBy: trackByCreated">
+                <div class="imageContainer">
+                    <img class="profileImg" [src]="msg.user?.photoURL">
+                    
+                </div>
+            <div class= "contentContainer">
+                <p class="user">{{ msg.user?.displayName || msg.user.uid}}</p>
+                <div *ngIf="checkLink(msg.content) == 1; else map">
+                    <p>{{ msg.content }}</p>
+                </div>
+            </div>
+                
+    <!-- The checkLink() function in chat-room.component.ts returns an integer depending on what type of content the user is trying to send. -->
+
+                <ng-template #map>
+                    <div *ngIf="checkLink(msg.content) == 2; else gif">
+                        <img src='{{ msg.content }}'>
+                    </div>
+                </ng-template>
+                
+                <ng-template #gif>
+                    <div *ngIf="checkLink(msg.content) == 3">
+                        <img class="gifImg" src='{{ msg.content }}' alt="Image">
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <div class="messageBar">
+            <div class="inputDiv">
+                <input [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)" pla bceholder="Enter a Message" appearance="fill">
+                <button mat-raised-button color="primary" (click)="submit(chat.id)" class="sendButton" >Send</button>
+            </div>
+            <div>
+                <button mat-raised-button [matMenuTriggerFor]="map" class="extraButtons">
+                    <mat-icon>place icon</mat-icon>
+                </button>
+                <mat-menu yPosition="above" #map="matMenu">
+                    <app-map (click)="$event.stopPropagation()"></app-map>
+                </mat-menu>
+        
+                <button mat-raised-button [matMenuTriggerFor]="gif" class="extraButtons">
+                    <mat-icon>gif icon</mat-icon>
+                </button>
+                <mat-menu yPosition="above" #gif="matMenu" class="gifMenu">
+                    <app-giphy (click)="$event.stopPropagation()"></app-giphy>
+                    <app-gifs-display></app-gifs-display>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+

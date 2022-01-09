@@ -1,0 +1,46 @@
+
+<ng-container *ngIf="auth.user$ | async as user; else login">
+    <mat-toolbar color="primary">
+        <h1>Welcome, {{ user.displayName }}</h1>
+        <img class="profileImg" [src]="user?.photoURL">
+        <span class="example-spacer"></span>
+        <h1>Sign Out</h1>
+        <button mat-icon-button aria-label="logout" (click)="auth.signOut()" class="hvr-grow-shadow">
+            <mat-icon>login</mat-icon>
+        </button>
+    </mat-toolbar>
+    <div class="create-container">
+        <h1>Create a room</h1>
+        <mat-form-field>
+            <input matInput [(ngModel)]="title" value="Enter a room title">
+        </mat-form-field>
+        <button mat-mini-fab color="primary" (click)="submitRoom(title)" class="hvr-grow-shadow">
+            <mat-icon>check</mat-icon>
+        </button>
+    </div>
+    <div  class="room-container">
+        <ul>
+            <h1>Your Created Chat Rooms</h1>
+            <li *ngFor="let chat of userCreatedChatRooms$ | async">
+                <a mat-raised-button color="primary" [routerLink]="'chatRoom/' + chat.id" class="hvr-grow-shadow">{{chat.title}}</a>
+            </li>
+        </ul>
+        <ul>
+        <h1>All Chat Rooms</h1>
+          <li *ngFor="let chat of allChatRooms$ | async">
+              <a mat-raised-button color="primary" [routerLink]="'chatRoom/' + chat.id" class="hvr-grow-shadow">{{chat.title}}</a>
+            </li>
+        </ul>
+      </div>
+</ng-container>
+
+<ng-template #login>
+    <mat-toolbar color="primary" >
+        <h1>Login with Google</h1>
+        <button mat-icon-button aria-label="login with google button" (click)="auth.googleSignin()" class="hvr-grow-shadow">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+    </mat-toolbar>
+    <h1 class="header">Welcome to ChatApp, please login with Google to view Chat Rooms</h1>
+</ng-template>
+

@@ -1,0 +1,9 @@
+<!-- The map component contains the input and button to generate a map to be sent in the chat. The map service generates a link for an image based on the user's input. -->
+<ng-container *ngIf="chat$ | async as chat">
+    <input id="link" type="text" [formControl]="linkForm" placeholder="Enter a Location">
+    <button (click)="submit(chat.id)">
+        <mat-icon>
+            check
+        </mat-icon>
+    </button>
+</ng-container>

@@ -1,0 +1,100 @@
+.container{
+    background-color: lightgrey;
+
+    border-radius: 20px;
+    width: 80%;
+    margin: 30px auto;
+    margin-bottom: 20px;
+
+    padding: 10px;
+    height: 80%;
+    position: relative;
+
+    // The 3 lines below were obtained from a response by user Nathan Arthur at this StackOverflow post:
+    // https://stackoverflow.com/questions/18614301/keep-overflow-div-scrolled-to-bottom-unless-user-scrolls-up
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.profileImg{
+    border-radius: 50%;
+    height: 50px;
+ 
+}
+
+.imageContainer{
+   vertical-align: middle;
+    display: inline-block;
+}
+.contentContainer{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+
+    padding: 5px;
+    margin: 2px;
+}
+
+.user{
+    font-weight: 500;
+    margin: 0;
+}
+.messageContainer{
+    padding:5px;
+    vertical-align: text-bottom;
+    margin-bottom: 5%;
+}
+
+.messageBar {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 95%;
+    height: 3%;
+    margin-bottom: 1%;
+}
+
+input {
+    width: 90%;
+    height: 98%;
+}
+
+.gifImg {
+    width: 100%;
+    height: 150px;
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
+
+#spacer {
+    width: 100%;
+    height: 50px;
+}
+h1 {
+    text-align: center;
+}
+
+.extraButtons{
+    width: 5%;
+    margin-right: 3px;
+}
+
+.sendButton {
+    width: 5%;
+    margin-left: 5px;
+}
+
+.inputDiv{
+    width: 80%;
+}
+
+.gifMenu {
+    display: flex;
+    justify-content: center;
+}

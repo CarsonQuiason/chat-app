@@ -1,0 +1,9 @@
+<ng-container *ngIf="chat$ | async as chat">
+    <h4>Trending Gifs</h4>
+    <div class="gifs">
+
+        <div class="gif" *ngFor="let gif of gifs">
+            <img class="gifImg" [src]="gif.images.downsized.url" alt="Image" (click)="submit(chat.id, gif.images.downsized.url)">
+        </div>
+    </div>
+</ng-container>

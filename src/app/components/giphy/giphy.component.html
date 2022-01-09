@@ -1,0 +1,11 @@
+<ng-container *ngIf="chat$ | async as chat">
+    <div class="class">
+        <input type="text" placeholder="Search for GIF" #gif (keyup.enter)="search(gif.value)">
+    </div>
+    <div class="gifs">
+
+        <div class="gif" *ngFor="let gif of gifs">
+            <img class="gifImg" [src]="gif.images.downsized.url" alt="Image" (click)="submit(chat.id, gif.images.downsized.url)">
+        </div>
+    </div>
+</ng-container>
